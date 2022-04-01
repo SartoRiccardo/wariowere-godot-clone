@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wario_death_0.mp3-cf4cd73ea2d3f5dfeb327c3d778fd8d7.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/wario_death_0.mp3"
+dest_files=[ "res://.import/wario_death_0.mp3-cf4cd73ea2d3f5dfeb327c3d778fd8d7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

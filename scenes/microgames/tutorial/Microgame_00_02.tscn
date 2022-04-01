@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/microgames/Microgame_00_02.gd" type="Script" id=1]
+[ext_resource path="res://scenes/base/MicrogameStandard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sounds/music/microgame_00_02.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scenes/microgames/tutorial/entities/00_02_Car.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/util/AudioSpeedController.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 103, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 81.25 )
+
+[node name="Microgame_00_02" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+difficulty = 0
+time = 3.0
+
+[node name="Camera" parent="." index="0"]
+microgame_window_size = Vector2( 200, 150 )
+microgame_background_color = Color( 0.12549, 0.745098, 0, 1 )
+
+[node name="Car" parent="." index="1" instance=ExtResource( 4 )]
+
+[node name="Balls" type="Node2D" parent="." index="2"]
+
+[node name="Boundary" type="StaticBody2D" parent="." index="4"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary" index="0"]
+position = Vector2( 1, 77.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary" index="1"]
+position = Vector2( 1, -78 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary" index="2"]
+position = Vector2( -104, -0.25 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary" index="3"]
+position = Vector2( 104, -0.25 )
+shape = SubResource( 2 )
+
+[node name="Soundtrack" parent="." index="5" instance=ExtResource( 5 )]
+stream = ExtResource( 3 )
+bus = "Microgame-Soundtrack"

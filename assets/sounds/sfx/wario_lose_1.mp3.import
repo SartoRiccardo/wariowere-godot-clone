@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wario_lose_1.mp3-f86a1724c3b5423add5285f56a19797f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/wario_lose_1.mp3"
+dest_files=[ "res://.import/wario_lose_1.mp3-f86a1724c3b5423add5285f56a19797f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

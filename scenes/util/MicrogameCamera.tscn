@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/themes/MicrogameTheme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/components/MicrogameCamera.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ui/MicrogameBomb.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/microgame-bomb.png" type="Texture" id=5]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec2 hole_size;
+uniform vec2 panel_size;
+
+uniform vec3 background_color;
+uniform vec3 background_color_checkers;
+uniform float checker_size = 10.0;
+
+
+bool is_black(vec3 color) {
+	return color.x == 0.0 && color.y == 0.0 && color.z == 0.0;
+}
+
+void fragment() {
+	vec2 hole_coords = (panel_size-hole_size) / 2.0;
+	
+	vec2 current_pixel = panel_size * UV;
+	current_pixel.x = float(int(current_pixel.x));
+	current_pixel.y = float(int(current_pixel.y));
+
+	if(current_pixel.x >= hole_coords.x && current_pixel.y >= hole_coords.y &&
+			current_pixel.x < hole_coords.x+hole_size.x &&
+			current_pixel.y < hole_coords.y+hole_size.y) {
+		COLOR.rgba = vec4(0, 0, 0, 0);
+	}
+	else {
+		if((int(current_pixel.x / checker_size)%2 == 0 || int(current_pixel.y / checker_size)%2 == 0) &&
+				!(int(current_pixel.x / checker_size)%2 == 0 && int(current_pixel.y / checker_size)%2 == 0) ||
+				is_black(background_color_checkers))
+			COLOR.rgb = background_color;
+		else
+			COLOR.rgb = background_color_checkers;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/hole_size = Vector2( 192, 122 )
+shader_param/panel_size = Vector2( 240, 160 )
+shader_param/background_color = Vector3( 0.952941, 0.243137, 0.843137 )
+shader_param/background_color_checkers = Vector3( 0.772549, 0, 0.6 )
+shader_param/checker_size = 10.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 16, 48, 48 )
+
+[node name="Camera2D" type="Camera2D"]
+current = true
+script = ExtResource( 2 )
+background_color = Color( 0.917647, 0.501961, 0.988235, 1 )
+background_color_checkers = Color( 0.666667, 0, 1, 1 )
+microgame_background_color = Color( 0, 0, 0, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 220, 140 )
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameContainer" type="PanelContainer" parent="CanvasLayer/Background"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 230.0
+margin_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 220, 140 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BombExploded" type="TextureRect" parent="CanvasLayer/Background"]
+visible = false
+margin_top = 112.0
+margin_right = 48.0
+margin_bottom = 160.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = SubResource( 9 )
+
+[node name="BombCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bomb" parent="BombCanvasLayer" instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -100, -65, 100, -65, 100, 65, -100, 65, -100, -65 )
+width = 3.0

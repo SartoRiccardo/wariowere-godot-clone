@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/car_vroom.mp3-5f06f29471357d99baeec87cec282e6a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/car_vroom.mp3"
+dest_files=[ "res://.import/car_vroom.mp3-5f06f29471357d99baeec87cec282e6a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

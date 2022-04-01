@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chirp.mp3-ba342289f1a0b5482fd2e479017d1bad.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/chirp.mp3"
+dest_files=[ "res://.import/chirp.mp3-ba342289f1a0b5482fd2e479017d1bad.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

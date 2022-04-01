@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/base/Microgame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/util/MicrogameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/tileset.tres" type="TileSet" id=3]
+
+[node name="Microgame_LV_NO" instance=ExtResource( 1 )]
+script = null
+
+[node name="Camera" parent="." index="0" instance=ExtResource( 2 )]
+background_color = Color( 0.952941, 0.243137, 0.843137, 1 )
+background_color_checkers = Color( 0.772549, 0, 0.6, 1 )
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1

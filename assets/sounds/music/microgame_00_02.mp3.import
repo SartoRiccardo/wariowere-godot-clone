@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/microgame_00_02.mp3-d37efcd781446ed0ba68ff63b92500bd.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/microgame_00_02.mp3"
+dest_files=[ "res://.import/microgame_00_02.mp3-d37efcd781446ed0ba68ff63b92500bd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
