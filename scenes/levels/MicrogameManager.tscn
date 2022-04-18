@@ -1,0 +1,114 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/levels/MicrogameManager.gd" type="Script" id=1]
+[ext_resource path="res://scenes/microgames/tutorial/Microgame_00_01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/microgames/tutorial/Microgame_00_02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sounds/sfx/wario_lose_3.mp3" type="AudioStream" id=4]
+[ext_resource path="res://scenes/util/RandomAudioPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sounds/sfx/wario_lose_0.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/sfx/wario_lose_2.mp3" type="AudioStream" id=7]
+[ext_resource path="res://scenes/ui/PrologueLevelGUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sounds/sfx/wario_win_3.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/sfx/wario_win_0.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/sfx/wario_win_2.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/sfx/wario_win_1.mp3" type="AudioStream" id=12]
+[ext_resource path="res://scenes/util/DifficultyAudioPlayer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/sounds/sfx/next_microgame_00_01.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/sfx/victory_00_02.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/sfx/life_loss_00_01.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/sounds/sfx/life_loss_00_02.mp3" type="AudioStream" id=17]
+[ext_resource path="res://scenes/util/AudioSpeedController.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/sounds/sfx/level_up.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/sfx/victory_00_01.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/sfx/next_microgame_00_02.mp3" type="AudioStream" id=21]
+[ext_resource path="res://scenes/microgames/tutorial/Microgame_00_03.tscn" type="PackedScene" id=22]
+
+[node name="MicrogameManager" type="Node"]
+script = ExtResource( 1 )
+microgames = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 22 ) ]
+ramp_up_interval = 1
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DeathAudioPlayer" parent="Sounds" instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds/DeathAudioPlayer"]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Sounds/DeathAudioPlayer"]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Sounds/DeathAudioPlayer"]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Sounds/DeathAudioPlayer"]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="WinAudioPlayer" parent="Sounds" instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds/WinAudioPlayer"]
+stream = ExtResource( 10 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Sounds/WinAudioPlayer"]
+stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Sounds/WinAudioPlayer"]
+stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Sounds/WinAudioPlayer"]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="MicrogameVictory" parent="Sounds" instance=ExtResource( 13 )]
+
+[node name="AudioSpeedController3" parent="Sounds/MicrogameVictory" groups=["easy", "hard"] instance=ExtResource( 18 )]
+stream = ExtResource( 20 )
+
+[node name="AudioSpeedController4" parent="Sounds/MicrogameVictory" groups=["medium"] instance=ExtResource( 18 )]
+stream = ExtResource( 15 )
+
+[node name="MicrogameStart" parent="Sounds" instance=ExtResource( 13 )]
+
+[node name="AudioSpeedController" parent="Sounds/MicrogameStart" groups=["easy", "hard"] instance=ExtResource( 18 )]
+stream = ExtResource( 21 )
+
+[node name="AudioSpeedController2" parent="Sounds/MicrogameStart" groups=["medium"] instance=ExtResource( 18 )]
+stream = ExtResource( 14 )
+
+[node name="MicrogameLoss" parent="Sounds" instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds/MicrogameLoss"]
+stream = ExtResource( 16 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Sounds/MicrogameLoss"]
+stream = ExtResource( 17 )
+
+[node name="RampUp" parent="Sounds" instance=ExtResource( 18 )]
+stream = ExtResource( 19 )
+
+[node name="MicrogameContainer" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelGUIContainer" type="ViewportContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/LevelGUIContainer"]
+size = Vector2( 240, 160 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="LevelGUI" parent="CanvasLayer/LevelGUIContainer/Viewport" instance=ExtResource( 8 )]

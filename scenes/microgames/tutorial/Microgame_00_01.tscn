@@ -13,7 +13,7 @@ extents = Vector2( 10, 10.5 )
 
 [node name="Microgame_00_01" instance=ExtResource( 3 )]
 script = ExtResource( 5 )
-time = 3.5
+time = 3.4
 
 [node name="Camera" parent="." index="0"]
 position = Vector2( -340, -80 )

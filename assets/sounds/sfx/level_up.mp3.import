@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/level_up.mp3-1d9a275cb4abae40fe09d2f2fc82e5c9.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/level_up.mp3"
+dest_files=[ "res://.import/level_up.mp3-1d9a275cb4abae40fe09d2f2fc82e5c9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

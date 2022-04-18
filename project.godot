@@ -20,7 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="WarioWere Clone"
+config/name="WarioWare Clone"
+config/description="A remake of WarioWare Inc. Mega Microgame$ to get practice with Godot."
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
@@ -40,7 +41,7 @@ window/size/height=160
 window/size/test_width=1200
 window/size/test_height=800
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

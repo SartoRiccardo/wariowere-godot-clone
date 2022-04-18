@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_death
+
 onready var death_particles = $DeathParticles/Particles2D
 
 var particle_amt = 12
@@ -9,16 +11,21 @@ var inputs = []
 var velocity = Vector2.ZERO
 var prev_move_vector = Vector2.ZERO
 var alive = true
+var stopped = false
 
 func _ready():
 	$HurtBox.connect("area_entered", self, "on_hurtbox_enter")
+	$Sprite.get_texture().region.position = Vector2(18, 0)
 	create_death_particles()
 
 func start():
 	pass
 
-func _process(delta):
-	if not alive:
+func stop():
+	stopped = true
+
+func _process(_delta):
+	if not alive or stopped:
 		return
 
 	register_inputs()
@@ -86,3 +93,4 @@ func on_hurtbox_enter(_a2d):
 		start_death_particles()
 		$AudioSpeedController.play()
 		alive = false
+		emit_signal("player_death")

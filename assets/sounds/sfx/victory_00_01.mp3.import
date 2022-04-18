@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/victory_00_01.mp3-ef5d93f36498e040e753f92b9d01577c.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/victory_00_01.mp3"
+dest_files=[ "res://.import/victory_00_01.mp3-ef5d93f36498e040e753f92b9d01577c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

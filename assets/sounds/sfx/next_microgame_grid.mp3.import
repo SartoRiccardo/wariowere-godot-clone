@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/next_microgame_grid.mp3-f4edd058f352fae3c300389291f62ade.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/next_microgame_grid.mp3"
+dest_files=[ "res://.import/next_microgame_grid.mp3-f4edd058f352fae3c300389291f62ade.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

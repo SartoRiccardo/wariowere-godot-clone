@@ -15,7 +15,7 @@ extents = Vector2( 5, 81.25 )
 [node name="Microgame_00_02" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 difficulty = 0
-time = 3.0
+time = 3.4
 
 [node name="Camera" parent="." index="0"]
 microgame_window_size = Vector2( 200, 150 )

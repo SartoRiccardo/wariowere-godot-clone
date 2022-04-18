@@ -20,8 +20,6 @@ func _ready():
 	var bomb = $"/root/Helpers".get_bomb()
 	if bomb:
 		bomb.connect("explode", self, "on_microgame_timeout")
-	
-	start_minigame()
 
 func _set_game_speed(new_speed):
 	var components_to_update = [$Player, soundtrack, $CrazyCar, $Camera]
@@ -33,7 +31,6 @@ func set_difficulty(difficulty):
 	match difficulty:
 		GE.Difficulty.EASY:
 			chances = { GE.CarBehavior.NORMAL: 1.0 }
-			chances = { GE.CarBehavior.SMALL: 1.0 }
 		GE.Difficulty.MEDIUM:
 			chances = {
 				GE.CarBehavior.NORMAL: 0.7,

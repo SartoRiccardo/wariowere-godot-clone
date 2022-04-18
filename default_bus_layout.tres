@@ -9,6 +9,7 @@ resource_name = "PitchShift"
 oversampling = 8
 
 [resource]
+bus/0/volume_db = -15.795
 bus/1/name = "Soundtrack"
 bus/1/solo = false
 bus/1/mute = false

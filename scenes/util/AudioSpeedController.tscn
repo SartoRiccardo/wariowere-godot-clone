@@ -2,5 +2,5 @@
 
 [ext_resource path="res://scripts/util/AudioSpeedController.gd" type="Script" id=1]
 
-[node name="AudioSpeedController" type="AudioStreamPlayer"]
+[node name="AudioSpeedController" type="AudioStreamPlayer" groups=["audio_speed_controller"]]
 script = ExtResource( 1 )

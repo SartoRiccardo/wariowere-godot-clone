@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/life_loss_00_02.mp3-96d3f42851df2557881c84e5ac159013.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/life_loss_00_02.mp3"
+dest_files=[ "res://.import/life_loss_00_02.mp3-96d3f42851df2557881c84e5ac159013.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -8,6 +8,7 @@ onready var bomb_spark = $VBoxContainer/Bomb/SparkContainer/Spark
 onready var bomb_counter = $VBoxContainer/Counter
 
 var tick_duration = 1/3.0
+var first_tick_duration = tick_duration
 var idle_time = 3.0
 var microgame_bomb_counters = [
 	preload("res://resources/textures/MicrogameBomb1.tres"),
@@ -18,6 +19,7 @@ var microgame_bomb_counters = [
 var game_speed = 1
 var seconds_until_show = 0
 var seconds_until_start = 0
+var started = false
 
 func _ready():
 	var minigame = $"/root/Helpers".current_microgame()
@@ -25,6 +27,14 @@ func _ready():
 		var time = minigame.time
 		var fuse_amount = get_available_fuses().size()
 		var active_bomb_time = fuse_amount * tick_duration
+		
+		if time < active_bomb_time:
+			var real_fuse_amount = int(time / tick_duration)
+			for _i in range(fuse_amount - real_fuse_amount):
+				bomb_tick()
+			first_tick_duration = time - real_fuse_amount*tick_duration
+			if first_tick_duration < 0:
+				first_tick_duration = tick_duration
 		
 		seconds_until_start = time - active_bomb_time
 		seconds_until_start = clamp(seconds_until_start, 0, idle_time)
@@ -86,7 +96,13 @@ func start_bomb():
 	bomb_spark.show()
 	
 	var remaining_ticks = bomb_tick()
-	var timer = get_tree().create_timer(tick_duration / game_speed)
+	var timer
+	if started:
+		timer = get_tree().create_timer(tick_duration / game_speed)
+	else:
+		started = true
+		timer = get_tree().create_timer(first_tick_duration) # Dividing by game speed would make the duration too low
+		
 	if remaining_ticks <= 0:
 		timer.connect("timeout", self, "explode")
 	else:

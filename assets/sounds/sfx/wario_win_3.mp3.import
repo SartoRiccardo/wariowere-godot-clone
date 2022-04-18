@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wario_win_3.mp3-32191eca304f6d2f7a030855ae69d20b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/wario_win_3.mp3"
+dest_files=[ "res://.import/wario_win_3.mp3-32191eca304f6d2f7a030855ae69d20b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,16 +1,17 @@
 extends KinematicBody2D
 
-var movement_speed = 100
+var movement_speed = 120
 var game_speed = 1
 var move_vector = Vector2.ZERO
+var stopped = false
 
-func _ready():
-	pass
-
-func start():
-	pass
+func stop():
+	stopped = true
 
 func _process(delta):
+	if stopped:
+		return
+	
 	var movement = move_vector * game_speed * movement_speed * delta
 	var collision = move_and_collide(movement)
 	if collision:

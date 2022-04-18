@@ -17,6 +17,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=5]
+resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
 spread = 0.0

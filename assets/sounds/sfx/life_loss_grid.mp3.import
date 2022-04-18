@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/life_loss_grid.mp3-f5c0a756ff59f3b383af9ba912792c79.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/life_loss_grid.mp3"
+dest_files=[ "res://.import/life_loss_grid.mp3-f5c0a756ff59f3b383af9ba912792c79.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

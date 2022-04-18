@@ -7,20 +7,19 @@ var ball_scene = preload("res://scenes/microgames/tutorial/entities/00_02_ball.t
 var ball_num = 2
 
 var ball_rotate_speed = 100
-var ball_rotate_time = 1
+var ball_rotate_time = .7
 var ball_rotate_time_rand = 0.3
 var are_balls_rotating = true
 var game_started = false
+var won = true
 
 func _ready():
 	var bomb = $"/root/Helpers".get_bomb()
 	if bomb:
 		bomb.connect("explode", self, "on_microgame_timeout")
+	$Car.connect("player_death", self, "_on_player_death")
 	
 	rng.randomize()
-	.set_game_speed(game_speed)
-	set_difficulty(difficulty)
-	call_deferred("start_minigame")
 
 func _process(delta):
 	if not game_started:
@@ -79,7 +78,7 @@ func init_balls_movement_vector():
 		if pos.x == 0:
 			angle_from_center = deg2rad(90) * sign(pos.y)
 		elif pos.y == 0:
-			angle_from_center = deg2rad(180) if sign(pos.x) == -1 else 0
+			angle_from_center = deg2rad(180) if sign(pos.x) == -1 else 0.0
 		else:
 			angle_from_center = atan(pos.y/pos.x)
 			if sign(pos.x) == -1:
@@ -89,5 +88,12 @@ func init_balls_movement_vector():
 #		print("POS: %s, ANGLE: %s" % [pos, stepify(rad2deg(angle_from_center), 0.001)])
 		ball.set_angle(angle_from_center)
 
+func _on_player_death():
+	won = false
+	emit_signal("loss")
+
 func on_microgame_timeout():
-	emit_signal("timeout", true)
+	$Car.stop()
+	for ball in $Balls.get_children():
+		ball.stop()
+	emit_signal("timeout", won)
