@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/levels/MicrogameManager.gd" type="Script" id=1]
 [ext_resource path="res://scenes/microgames/tutorial/Microgame_00_01.tscn" type="PackedScene" id=2]
@@ -22,11 +22,11 @@
 [ext_resource path="res://assets/sounds/sfx/victory_00_01.mp3" type="AudioStream" id=20]
 [ext_resource path="res://assets/sounds/sfx/next_microgame_00_02.mp3" type="AudioStream" id=21]
 [ext_resource path="res://scenes/microgames/tutorial/Microgame_00_03.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/microgames/tutorial/Microgame_00_04.tscn" type="PackedScene" id=23]
 
 [node name="MicrogameManager" type="Node"]
 script = ExtResource( 1 )
-microgames = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 22 ) ]
-ramp_up_interval = 1
+microgames = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 23 ) ]
 
 [node name="Sounds" type="Node" parent="."]
 

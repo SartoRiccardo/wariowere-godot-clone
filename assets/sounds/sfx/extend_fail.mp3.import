@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/extend_fail.mp3-ad26f0ce04fd2bc8bf8b044467e2b682.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/extend_fail.mp3"
+dest_files=[ "res://.import/extend_fail.mp3-ad26f0ce04fd2bc8bf8b044467e2b682.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -57,11 +57,11 @@ func ignite_bomb():
 
 func set_microgame_pitch(value):
 	return  # Function isn't really needed, it's only if pitch needs to remain the same
-	var sfx_bus = AudioServer.get_bus_index("Microgame-SFX")
-	var ost_bus = AudioServer.get_bus_index("Microgame-Soundtrack")
-	for bus in [sfx_bus, ost_bus]:
-		var pitch_eff = AudioServer.get_bus_effect(bus, 0)
-		pitch_eff.set_pitch_scale(value)
+#	var sfx_bus = AudioServer.get_bus_index("Microgame-SFX")
+#	var ost_bus = AudioServer.get_bus_index("Microgame-Soundtrack")
+#	for bus in [sfx_bus, ost_bus]:
+#		var pitch_eff = AudioServer.get_bus_effect(bus, 0)
+#		pitch_eff.set_pitch_scale(value)
 
 func fade_animatedsprite(sprite: AnimatedSprite, anim_name, _duration=1.0):
 	# Duplicate result below
